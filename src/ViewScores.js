@@ -21,6 +21,9 @@ import TextField from '@material-ui/core/TextField';
 import { FormControl, FormControlLabel, FormLabel, Grid } from '@material-ui/core';
 import { Typography, Radio, RadioGroup, InputLabel, MenuItem, Select } from '@material-ui/core';
 
+const BACKEND_URL = process.env.BACKEND_URL;
+const PORT = process.env.PORT;
+const BASE_BACKEND_URL = `${BACKEND_URL}:${PORT}`;
 
 
 const useStyles1 = makeStyles((theme) => ({
@@ -119,7 +122,7 @@ export default function ViewScores() {
   };
 
   const handleDelete = (id) => {
-    fetch('http://localhost:3001/tests', {
+    fetch(`${BACKEND_URL}:${PORT}/tests`, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -135,7 +138,7 @@ export default function ViewScores() {
 
   useEffect(() => {
     console.log('fetching database data')
-    fetch('http://localhost:3001/tests')
+    fetch(BASE_BACKEND_URL + '/tests')
       .then((response) => {
         return response.json();
       })
@@ -201,7 +204,7 @@ export default function ViewScores() {
     console.log('onUpdate tmpRowValue', tmpRowValues);
     // let updatedData = {...tmpRowValues, test_id: clickedId, push_ups_score: pushupScore, sit_ups_score: situpsScore};
     // console.log('onUpdate() updatedData: ', updatedData);
-    fetch('http://localhost:3001/tests', {
+    fetch(BASE_BACKEND_URL + '/tests', {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
