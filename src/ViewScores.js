@@ -23,7 +23,8 @@ import { Typography, Radio, RadioGroup, InputLabel, MenuItem, Select } from '@ma
 
 const BACKEND_URL = process.env.BACKEND_URL;
 const PORT = process.env.PORT;
-const BASE_BACKEND_URL = `${BACKEND_URL}:${PORT}`;
+const BASE_BACKEND_URL = `${BACKEND_URL}:${PORT}/tests`;
+console.log('BASE_BACKEND_URL', BASE_BACKEND_URL);
 
 
 const useStyles1 = makeStyles((theme) => ({
