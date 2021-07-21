@@ -23,7 +23,7 @@ import { Typography, Radio, RadioGroup, InputLabel, MenuItem, Select } from '@ma
 
 const BACKEND_URL = process.env.BACKEND_URL;
 const PORT = process.env.PORT;
-const BASE_BACKEND_URL = `${BACKEND_URL}:${PORT}/tests`;
+const BASE_BACKEND_URL = `http://${BACKEND_URL}:${PORT}/tests`;
 console.log('BASE_BACKEND_URL', BASE_BACKEND_URL);
 
 
@@ -123,7 +123,7 @@ export default function ViewScores() {
   };
 
   const handleDelete = (id) => {
-    fetch(`${BACKEND_URL}:${PORT}/tests`, {
+    fetch(BASE_BACKEND_URL, {
       method: 'DELETE',
       headers: {
         'Content-Type': 'application/json',
@@ -139,7 +139,7 @@ export default function ViewScores() {
 
   useEffect(() => {
     console.log('fetching database data')
-    fetch(BASE_BACKEND_URL + '/tests')
+    fetch(BASE_BACKEND_URL)
       .then((response) => {
         return response.json();
       })
@@ -205,7 +205,7 @@ export default function ViewScores() {
     console.log('onUpdate tmpRowValue', tmpRowValues);
     // let updatedData = {...tmpRowValues, test_id: clickedId, push_ups_score: pushupScore, sit_ups_score: situpsScore};
     // console.log('onUpdate() updatedData: ', updatedData);
-    fetch(BASE_BACKEND_URL + '/tests', {
+    fetch(BASE_BACKEND_URL, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
