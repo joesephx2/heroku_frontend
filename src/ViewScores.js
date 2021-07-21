@@ -22,6 +22,7 @@ import { FormControl, FormControlLabel, FormLabel, Grid } from '@material-ui/cor
 import { Typography, Radio, RadioGroup, InputLabel, MenuItem, Select } from '@material-ui/core';
 
 const BACKEND_URL = process.env.BACKEND_URL;
+console.log('process.env.BACKEND_URL', process.env.BACKEND_URL);
 const PORT = process.env.PORT;
 const BASE_BACKEND_URL = `http://${BACKEND_URL}:${PORT}/tests`;
 console.log('BASE_BACKEND_URL', BASE_BACKEND_URL);
